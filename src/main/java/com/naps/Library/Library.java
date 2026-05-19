@@ -52,4 +52,21 @@ public class Library {
             System.out.println("Returned.");
         }
     }
+    /**
+     * Adding method to add external csv file from the resource folder.
+     */
+    public void loadBooksFromCSV(String filePath) {
+        try (java.io.BufferedReader br = new java.io.BufferedReader(new java.io.FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+                if (data.length == 3) {
+                    books.add(new Book(data[0].trim(), data[1].trim(), data[2].trim()));
+                }
+            }
+            System.out.println("Books loaded from CSV.");
+        } catch (Exception e) {
+            System.out.println("Error loading CSV: " + e.getMessage());
+        }
+    }
 }
