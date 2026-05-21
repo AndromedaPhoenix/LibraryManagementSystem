@@ -60,8 +60,22 @@ public class Library {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
+//                if (data.length == 3) {
+//                    books.add(new Book(data[0].trim(), data[1].trim(), data[2].trim()));
+                /** Features of updated lines.
+                 * - Removes any quotes " " automatically
+                 * - Keeps ISBN as a string
+                 * - Works with or without quotes
+                 * - Works with leading zeros
+                 * - Works with all your CSV files
+                 */
                 if (data.length == 3) {
-                    books.add(new Book(data[0].trim(), data[1].trim(), data[2].trim()));
+                    String isbn = data[0].trim().replace("\"", "");
+                    String title = data[1].trim().replace("\"", "");
+                    String author = data[2].trim().replace("\"", "");
+
+                    books.add(new Book(isbn, title, author));
+
                 }
             }
             System.out.println("Books loaded from CSV.");

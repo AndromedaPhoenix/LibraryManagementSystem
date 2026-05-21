@@ -108,10 +108,10 @@ public class Main {
         /**lib.books.add(new Book("111", "CleanCode", "Martin"));
         lib.books.add(new Book("222", "Java", "Bloch"));
          */
-        //lib.loadBooksFromCSV("src/main/resources/Book.csv");
-        // lib.loadBooksFromCSV("Book.csv");
+        //lib.loadBooksFromCSV("src/main/resources/Book.csv"); ( test)
+        // lib.loadBooksFromCSV("Book.csv"); ( test)
         lib.loadBooksFromCSV("src/main/resources/Book.csv");
-        lib.members.add(new Member("M1", "Alice"));
-        lib.members.add(new PremiumMember("M2", "Bob"));
+        lib.members.add(new Member("M1", "Pranita"));
+        lib.members.add(new PremiumMember("M2", "Sugal"));
     }
 }
