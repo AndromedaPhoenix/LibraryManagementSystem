@@ -27,7 +27,10 @@ public class Library {
         }
 
         // to check if the book is already borrowed
-        if (b.borrowed) {
+        /**if (b.borrowed) {
+            System.out.println("Book already borrowed.");
+        */
+        if (!b.isAvailable()) {
             System.out.println("Book already borrowed.");
 
             // to check if member is a premium member and show availability
@@ -38,7 +41,11 @@ public class Library {
         }
 
         // to borrow the book and print the result on screen
-        if (m.borrow(b)) System.out.println("Borrowed successfully.");
+        if (m.borrow(b))
+        {   b.setAvailable(false);
+            b.borrowed=true;
+            System.out.println("Borrowed successfully.");
+        }
         else System.out.println("Borrow failed (limit reached).");
     }
 
@@ -49,6 +56,8 @@ public class Library {
         // to check member and book exist then return the book
         if (m != null && b != null) {
             m.giveBack(b);
+            b.setAvailable(true);
+            b.borrowed= false;
             System.out.println("Returned.");
         }
     }
@@ -67,7 +76,7 @@ public class Library {
                  * - Keeps ISBN as a string
                  * - Works with or without quotes
                  * - Works with leading zeros
-                 * - Works with all your CSV files
+                 * - Works with csv files
                  */
                 if (data.length == 3) {
                     String isbn = data[0].trim().replace("\"", "");
