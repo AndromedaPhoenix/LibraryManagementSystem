@@ -76,17 +76,19 @@ public class LibraryTest {
         // Assert
         assertNull(result);
     }
+
+
     /**
      * Adding Integration test
      */
 
-    //Test 5:
+    //Test 1:
     @Test
     void testBorrowBookMarksBookUnavailable() {
         // Arrange
-        lib.members.add(new Member("M1", "Alice"));
-        lib.books.add(new Book("101", "Clean Code", "Martin"));
-        lib.books.add( new Book("102","Passion of life", "James"));
+        lib.members.add(new Member("M1", "Ranbeer"));
+        lib.books.add(new Book("101", "Heartbeat on shell", "Hari"));
+        lib.books.add( new Book("102","Passion of life", "Sita"));
 
         // Act
         lib.borrow("M1", "102");
@@ -94,6 +96,21 @@ public class LibraryTest {
         // Assert
         assertFalse(lib.findBook("102").isAvailable());
     }
+    //Test 2:
+    @Test
+    void testBorrowBookAddsToMemberBorrowList() {
+        // Arrange
+        Member m = new Member("M1", "Angila");
+        lib.members.add(m);
+        lib.books.add(new Book("101", "Dog Hound ", "Axel"));
+
+        // Act
+        lib.borrow("M1", "101");
+
+        // Assert
+        assertEquals(1,m.getBorrowed().size());
+    }
+
 
 
 

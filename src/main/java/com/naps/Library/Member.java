@@ -9,7 +9,13 @@ import java.util.ArrayList;
 public class Member implements Borrowable {
     String id, name;
     int limit = 3;
+
+
     ArrayList<Book> borrowed = new ArrayList<>();
+
+    public ArrayList<Book> getBorrowed() {
+        return borrowed;
+    }
 
     public Member(String id, String name) {
         this.id = id;
