@@ -110,7 +110,67 @@ public class LibraryTest {
         // Assert
         assertEquals(1,m.getBorrowed().size());
     }
+    //Test3
+    @Test
+    void testReturnBookMakesBookAvailable() {
+        // Arrange
+        Member m = new Member("M1", "Namrata");
+        Book b = new Book("101", "Hamro Nepali Book", "Janardan Dahal");
+        lib.members.add(m);
+        lib.books.add(b);
+        lib.borrow("M1", "101");
 
+        // Act
+        lib.returnBook("M1", "101");
+
+        // Assert
+        assertTrue(b.isAvailable());
+    }
+
+   //Test 4
+   @Test
+   void testRegularMemberBorrowLimit() {
+       // Arrange
+       Member m = new Member("M1", "Alice");
+       lib.members.add(m);
+       lib.books.add(new Book("101", "B1", "A"));
+       lib.books.add(new Book("102", "B2", "A"));
+       lib.books.add(new Book("103", "B3", "A"));
+
+       // Act
+       lib.borrow("M1", "101");
+       lib.borrow("M1", "102");
+       lib.borrow("M1", "103"); // should fail silently or not add
+
+       // Assert
+       assertEquals(3, m.getBorrowed().size());
+   }
+
+    //Test 5
+    @Test
+    void testPremiumMemberBorrowLimit() {
+        // Arrange
+        PremiumMember pm = new PremiumMember("P1", "Bob");
+        lib.members.add(pm);
+
+        lib.books.add(new Book("101", "B1", "A"));
+        lib.books.add(new Book("102", "B2", "A"));
+        lib.books.add(new Book("103", "B3", "A"));
+        lib.books.add(new Book("104", "B4", "A"));
+        lib.books.add(new Book("105", "B5", "A"));
+        lib.books.add(new Book("106", "B6", "D"));
+
+        // Act
+        lib.borrow("P1", "101");
+        lib.borrow("P1", "102");
+        lib.borrow("P1", "103");
+        lib.borrow("P1", "104");
+        lib.borrow("P1", "105");
+        lib.borrow("P1", "106");
+
+        // Assert
+        assertEquals(6, pm.getBorrowed().size());
+    }
 
 
 
