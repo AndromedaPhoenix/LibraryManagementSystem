@@ -18,6 +18,9 @@ public class Main {
             System.out.println("4. Return Book");
             System.out.println("5. List Books");
             System.out.println("6. List Members");
+            System.out.println("7. Search Book");
+            System.out.println("8. Search Member");
+
             System.out.println("0. Exit");
             System.out.print("Choice: ");
 
@@ -30,6 +33,8 @@ public class Main {
                 case 4 -> returnBook();
                 case 5 -> lib.books.forEach(System.out::println);
                 case 6 -> lib.members.forEach(System.out::println);
+                case 7 -> searchBook();
+                case 8 -> searchMember();
                 case 0 -> {
                     System.out.println("Goodbye!");
                     return;
@@ -103,6 +108,57 @@ public class Main {
         lib.returnBook(id, isbn);
     }
 
+    static void searchBook() {
+        System.out.println("\n--- Search Book ---");
+        System.out.println("1. By ISBN");
+        System.out.println("2. By Title");
+        System.out.println("3. By Author");
+        System.out.print("Choice: ");
+
+        int choice = readInt();
+        sc.nextLine();
+
+        switch (choice) {
+            case 1 -> {
+                System.out.print("Enter ISBN: ");
+                Book b = lib.findBook(sc.nextLine());
+                System.out.println(b != null ? b : "Book not found.");
+            }
+            case 2 -> {
+                System.out.print("Enter Title: ");
+                lib.findBooksByTitle(sc.nextLine()).forEach(System.out::println);
+            }
+            case 3 -> {
+                System.out.print("Enter Author: ");
+                lib.findBooksByAuthor(sc.nextLine()).forEach(System.out::println);
+            }
+        }
+    }
+    static void searchMember() {
+        System.out.println("\n--- Search Member ---");
+        System.out.println("1. By Member ID");
+        System.out.println("2. By Name");
+        System.out.print("Choice: ");
+
+        int choice = readInt();
+        sc.nextLine(); // clear buffer
+
+        switch (choice) {
+            case 1 -> {
+                System.out.print("Enter Member ID: ");
+                String id = sc.nextLine();
+                Member m = lib.findMember(id);
+                System.out.println(m != null ? m : "Member not found.");
+            }
+            case 2 -> {
+                System.out.print("Enter Name: ");
+                String name = sc.nextLine();
+                lib.findMembersByName(name)
+                        .forEach(System.out::println);
+            }
+            default -> System.out.println("Invalid option.");
+        }
+    }
     // ---------- Sample Data ----------
     static void seed() {
         /**lib.books.add(new Book("111", "CleanCode", "Martin"));
