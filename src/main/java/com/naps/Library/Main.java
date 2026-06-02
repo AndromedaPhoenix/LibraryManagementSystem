@@ -11,6 +11,7 @@ public class Main {
         seed();
 
         while (true) {
+            System.out.println("========WELCOME TO OUR LIBRARY MANAGEMENT SYSTEM=============");
             System.out.println("\n===== Library Menu =====");
             System.out.println("1. Add Book");
             System.out.println("2. Add Member");
