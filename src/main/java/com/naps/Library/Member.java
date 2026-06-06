@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Member implements Borrowable {
     String id, name;
-    int limit = 3;
+    int limit = 3; //Borrow limit
 
 
     ArrayList<Book> borrowed = new ArrayList<>();

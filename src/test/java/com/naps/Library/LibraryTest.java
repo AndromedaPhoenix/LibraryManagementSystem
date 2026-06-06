@@ -140,7 +140,7 @@ public class LibraryTest {
        // Act
        lib.borrow("M1", "101");
        lib.borrow("M1", "102");
-       lib.borrow("M1", "103"); // should fail silently or not add
+       lib.borrow("M1", "103");
 
        // Assert
        assertEquals(3, m.getBorrowed().size());
@@ -150,7 +150,7 @@ public class LibraryTest {
     @Test
     void testPremiumMemberBorrowLimit() {
         // Arrange
-        PremiumMember pm = new PremiumMember("P1", "Bob");
+        PremiumMember pm = new PremiumMember("P1", "Shyam");
         lib.members.add(pm);
 
         lib.books.add(new Book("101", "B1", "A"));

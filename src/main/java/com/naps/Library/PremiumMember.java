@@ -6,7 +6,7 @@ public class PremiumMember extends Member {
 
     public PremiumMember(String id, String name) {
         super(id, name);
-        this.limit = 6; // Premium limit
+        this.limit = 6; // Borrow limit increases
     }
 
     public LocalDate availability(Book b) {

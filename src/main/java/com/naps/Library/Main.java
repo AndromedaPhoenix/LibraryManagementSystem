@@ -11,7 +11,7 @@ public class Main {
         seed();
 
         while (true) {
-            System.out.println("========WELCOME TO OUR LIBRARY MANAGEMENT SYSTEM=============");
+           /** System.out.println("========WELCOME TO OUR LIBRARY MANAGEMENT SYSTEM=============");
             System.out.println("\n===== Library Menu =====");
             System.out.println("1. Add Book");
             System.out.println("2. Add Member");
@@ -24,6 +24,26 @@ public class Main {
 
             System.out.println("0. Exit");
             System.out.print("Choice: ");
+            */
+            System.out.println("╔══════════════════════════════════════════════════════════════════╗");
+            System.out.println("║                    WELCOME TO OUR LIBRARY                        ║");
+            System.out.println("╚══════════════════════════════════════════════════════════════════╝");
+            System.out.println();
+            System.out.println("      ┌───────────────── LIBRARY MENU ─────────────────┐");
+            System.out.println("      │                                                 │");
+            System.out.println("      │  1. 📚 Add Book                                 │");
+            System.out.println("      │  2. 👤 Add Member                               │");
+            System.out.println("      │  3. 📖 Borrow Book                              │");
+            System.out.println("      │  4. ↩️  Return Book                             │");
+            System.out.println("      │  5. 📋 List Books                               │");
+            System.out.println("      │  6. 👥 List Members                             │");
+            System.out.println("      │  7. 🔍 Search Book                              │");
+            System.out.println("      │  8. 🔎 Search Member                            │");
+            System.out.println("      │                                                 │");
+            System.out.println("      │  0. ❌ Exit                                     │");
+            System.out.println("      │                                                 │");
+            System.out.println("      └─────────────────────────────────────────────────┘");
+            System.out.print("                     👉 Enter your choice: ");
 
             int choice = readInt();
 
